@@ -29,14 +29,14 @@ int main()
     int a, b, v, w, t, d, s;
 
     cin >> a >> v >> b >> w >> t;
-    d = abs(a - b); //絶対値
+    d = abs(a - b); //絶対値(aとbの距離)
     if (v <= w)
     {
         cout << "NO" << endl;
         return 0;
     }
-    s = v - w;
-    if (d <= (ll)s * t)
+    s = v - w;  //縮まる距離
+    if (d <= (ll)s * t) //追いつけないなら
     {
         cout << "YES" << endl;
     }
