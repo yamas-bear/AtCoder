@@ -2,37 +2,25 @@
 using namespace std;
 using ll = long long;
 using P = pair<int, int>;
-#define rep(i, n) for (int i = 1; i < (n) + 1; i++)
+#define rep(i, n) for (int i = 0; i < (n); i++)
 
+int a[10010];
 int main()
 {
-    ll n, sum = 0, hyp = 0;
+    int n, sum = 0;
     cin >> n;
-    // vector<ll> a(n);
-    vector<ll> a(n);
-    rep(i, n)
-    {
+    for (int i = 0; i < n; i++)
         cin >> a[i];
-    }
-
-    for (int i = 1; i < n + 1; i++)
+    for (int l = 0; l < n; l++)
     {
-        for (int j = i; j < n + 1; j++)
+        int x = a[l];
+        for (int r = l; r < n; r++)
         {
-            // ll min = *min_element(a.begin() + 1, a.begin() + 3);
-            ll min = *min_element(a.begin() + i, a.begin() + j + 1);
-            // cout << "min:" << min;
-            hyp = (j - i + 1) * min;
-            // cout << " "
-            //      << "hyp:" << hyp;
-            if (sum < hyp)
-            {
-                sum = hyp;
-            }
-            // cout << " "
-            //      << "sum:" << sum << " i:" << i << " j:" << j << endl;
+            x = min(x, a[r]);                //最小値を毎回更新していく感じ
+            sum = max(sum, x * (r - l + 1)); //sumとの比較によって求める
         }
     }
+
     cout << sum << endl;
     return 0;
 }
